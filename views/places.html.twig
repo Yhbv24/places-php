@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <title>Places You've Been</title>
+</head>
+<body>
+  <div class='container'>
+    <h1 class='jumbotron'>Places you have been</h1>
+
+    <form action='/list' method='post'>
+      <div class="form-group">
+        <label for='location'>Country or City?</label>
+        <input id='location' class='form-control' name='location' type='text'>
+      </div>
+
+      <div class="form-group">
+        <label for='time'>How long were you there?</label>
+        <input id='time' class='form-control' name='time' type='text'>
+      </div>
+
+      <div class="form-group">
+        <label for='date'>When did you go?</label>
+        <input id='date' class='form-control' name='date' type='text'>
+      </div>
+
+      <button type='submit' class="btn">Add Place</button>
+    </form>
+
+    <br><ul>
+      {%if places is not empty%}
+      {% for place in places%}
+      <h4>{{place.getLocation}}</h4>
+      <ul><li>{{place.getTime}}</li>
+        <li>{{place.GetDate}}</li></ul>
+      {%endfor%}
+      {%endif%}
+    </ul>
+    <form action='/delete_places' method='post'>
+      <button type='submit'>Clear</button>
+    </form>
+  </div>
+
+
+</body>
+</html>
